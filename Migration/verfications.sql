@@ -1,4 +1,7 @@
--- Etape 3 : montant total de chaque commande
+SELECT * FROM plats;
+
+SELECT * FROM categories;
+
 SELECT c.id_commande,
        c.date,
        SUM(cp.quantite * p.prix) AS montant_total
@@ -8,7 +11,6 @@ JOIN plats p ON p.id_plat = cp.id_plat
 GROUP BY c.id_commande, c.date
 ORDER BY c.id_commande;
 
--- Etape 4 : liste des commandes avec le nom du client
 SELECT c.id_commande,
        c.date,
        COALESCE(h.nom, 'client de passage') AS client
